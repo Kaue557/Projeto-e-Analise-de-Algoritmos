@@ -6,21 +6,18 @@ Seu programa deve imprimir o max-heap final.
 #include <stdio.h>
 #include <stdbool.h>
 
-int posPai(int i){ // precisa ser funcao?
-    return i/2;
-}
+void afunda(int vetor, int i, int  n){ // void?
+    int i = 1; // comecando em 1 para facilitar o manejo
 
-int posFilhoEsq(int i){ // precisa ser funcao?
-    return 2*i;
-}
+    int posPai = i/2;
+    int posFilhoEsq = 2*i;
+    int posFilhoDir = (2*i) + 1;
 
-int posFilhoDir(int i){ // precisa ser funcao?
-    return (2*i) + 1;
+
 }
 
 void criaHeapMax(int vetor, int n){ // void?
 
-    if(posFilhoDir(2) > posFilhoEsq()) // errado*
     for(int i = 1; i < n; i++){ // 'n'? ou sizeof blablabla?
 
     }
@@ -28,8 +25,8 @@ void criaHeapMax(int vetor, int n){ // void?
 }
 
 int main(){
-    int vetor = {12, 11, 7, 15, 21, 22, 13, 9, 1, 3, 8, 3};
-    int tamanho = 0;
+    int vetor = {0, 12, 11, 7, 15, 21, 22, 13, 9, 1, 3, 8, 3}; //ignora o indice 0 para manter a logica das contas
+    int tamanho = sizeof(vetor) / sizeof(int); // tamanho real do vetor
 
     return 0;
 }
