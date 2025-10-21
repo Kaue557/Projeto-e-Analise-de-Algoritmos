@@ -4,8 +4,6 @@ Escreva em C uma função cria-heap-max() que recebe um vetor v de inteiros e se
 Seu programa deve imprimir o max-heap final.
 */
 #include <stdio.h>
-#include <stdbool.h>
-
 
 void afunda(int vetor[], int i, int  n){ // void?
     int maior = i;
@@ -37,7 +35,7 @@ void criaHeapMax(int vetor[], int n){
 }
 
 int main(){
-    int vetor[] = {0, 12, 11, 7, 15, 21, 22, 13, 9, 1, 3, 8, 3}; //ignora o indice 0 para manter a logica das contas
+    int vetor[] = {0, 21, 32, 43, 54, 65, 10, 5, 2, 1, 4, 100, 50}; //ignora o indice 0 para manter a logica das contas
     int tamanho = sizeof(vetor) / sizeof(int) - 1; // tamanho real do vetor
 
     criaHeapMax(vetor, tamanho); // chamada da funcao
