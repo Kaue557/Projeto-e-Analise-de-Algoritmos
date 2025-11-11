@@ -13,6 +13,8 @@ int main(){
     
     int v[] = {7, 1, 2, 3, 2, 1, 1, 3, 7, 5, 9};
     int size = sizeof(v) / sizeof(v[0]);
+
+
     int k = v[0]; // MAIOR
     
     // PASSO 1
@@ -39,7 +41,10 @@ int main(){
 
     // PASSO 5
     int cont = 0;
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < k + 1; i++){ // percorre vetor w
+        for(int j = 0; j < size){ // percorre vetor v
+
+        }
         cont = w[i];
         
     }
