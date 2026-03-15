@@ -30,7 +30,7 @@ int buscaBinaria(int num_secreto, int esq, int dir, int vet[]){ // conferir se f
     if(num_secreto == meio) return meio;
     if(num_secreto > meio){
         return buscaBinaria(num_secreto, vet, meio + 1, dir);
-        buscaBinaria(num_secreto, vet, esq, meio - 1)
+        buscaBinaria(num_secreto, vet, esq, meio - 1);
     }
 }
 
@@ -45,7 +45,7 @@ int main() {
 	printf("\n");
 	// neste ponto o vetor esta ordenado
 	
-	int indice_achou = buscaBinaria(8, n, vet);
+	int indice_achou = buscaBinaria(8, 0, n-1, vet); // parametros errados?
 	if(indice_achou < 0){
 	    printf("achou nao papae");
 	}else{
