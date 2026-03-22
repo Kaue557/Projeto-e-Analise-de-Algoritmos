@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void sudoku4x4(int v[4][4]){
-    
-    
+bool sudoku4x4(int v[4][4]){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             if(v[i][j] == 0){
-                v[i][j] += 1;
-                if(v[i][j] == v[i][j+1] || v[i][j] == v[i+1][j]){
-                    v[i][j] += 1;
-                    sudoku4x4(v[i][j+1]);
+                for(int candidato = 1; candidato <= 4; candidato++){
+                    if(verificacao(v, i, j, candidato)){
+
+                    }
                 }
             }
             else{
@@ -19,18 +17,24 @@ void sudoku4x4(int v[4][4]){
             }
         }   
     }
+    return true;
 }
 
-bool verificacao(int v[4][4]){
-    bool valido = true;
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 4; j++){
-            if(v[i][j] == v[i][j+1] || v[i][j] == v[i+1][j]){
-                valido = false;
-            }
+bool verificacao(int v[4][4], int i, int j, int candidato){
+    // verifica linha
+    for(int k = 0; k < 4; k++){
+        if(v[i][k] == candidato){
+            return false;
+        }       
+    }
+
+    // verifica coluna
+    for(int l = 0; l < 4; l++){
+        if(v[l][j] == candidato){
+            return false;
         }
     }
-    return 1;
+    return true;
 }
 
 int main(){
