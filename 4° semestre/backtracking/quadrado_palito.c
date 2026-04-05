@@ -13,30 +13,57 @@ Restrições:
 • 1 <= palitos_de_fosforos[i] <= 108
 */
 
-bool pode_construir_quadrado(int palitos_de_fosforos[], int n){
-    if(n > 15 || n < 1){
-        printf("fora de range");
-        return false;
+#define MAX 15
+
+int lados[4];
+
+bool backtracking(int palitos[], int n, int i, int alvo) {
+    if (i == n) {
+        return (lados[0] == alvo &&
+                lados[1] == alvo &&
+                lados[2] == alvo &&
+                lados[3] == alvo);
     }
 
-    for(int i = 0; i < n; i++){
-        if(palitos_de_fosforos[i] < 1 || palitos_de_fosforos[i] > 108){
-            printf("fora de range de tamanho");
-            return false;
+    for (int j = 0; j < 4; j++) {
+        if (lados[j] + palitos[i] <= alvo) {
+            lados[j] += palitos[i];
+
+            if (backtracking(palitos, n, i + 1, alvo))
+                return true;
+
+            lados[j] -= palitos[i]; // desfaz a escolha
         }
-
-    }
-    if(len(palitos_de_fosforos) > 15 || len(palitos_de_fosforos) < 1){
-        printf("fora de range");
     }
 
-    return true;
+    return false;
 }
 
-int main(){
-    int palitos_de_fosforos[] = {1, 1, 2, 2, 2};
-    int n = sizeof(palitos_de_fosforos) / sizeof(palitos_de_fosforos[0]);
+bool pode_construir_quadrado(int palitos[], int n) {
 
+    int soma = 0;
+    for (int i = 0; i < n; i++)
+        soma += palitos[i];
+
+    if (soma % 4 != 0)
+        return false;
+
+    int alvo = soma / 4; 
+
+    for (int i = 0; i < 4; i++)
+        lados[i] = 0;
+
+    return backtracking(palitos, n, 0, alvo);
+}
+
+int main() {
+    int palitos[] = {1};
+    int n = sizeof(palitos)/sizeof(palitos[0]);
+
+    if (pode_construir_quadrado(palitos, n))
+        printf("Possivel\n");
+    else
+        printf("Nao possivel\n");
 
     return 0;
 }
