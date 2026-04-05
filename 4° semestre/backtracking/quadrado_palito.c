@@ -13,8 +13,8 @@ Restrições:
 • 1 <= palitos_de_fosforos[i] <= 108
 */
 
-boolean pode_construir_quadrado(int palitos_de_fosforos, int n){
-    if(len(palitos_de_fosforos) > 15 || len(palitos_de_fosforos) < 1){
+bool pode_construir_quadrado(int palitos_de_fosforos[], int n){
+    if(n > 15 || n < 1){
         printf("fora de range");
         return false;
     }
